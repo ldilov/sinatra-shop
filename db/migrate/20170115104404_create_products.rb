@@ -2,7 +2,7 @@
 class CreateProducts < ActiveRecord::Migration[5.0]
   def change
     create_table :products do |t|
-      t.float   :price, null: false
+      t.float   :price,    null: false
       t.integer :quantity, null: false
       t.integer :ram
       t.float   :cpu_frequency
