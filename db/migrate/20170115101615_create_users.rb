@@ -8,10 +8,8 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string  :email
       t.string  :gender
       t.string  :phone
-      t.references :cart, index: true
       t.timestamps
     end
-    add_foreign_key :users, :carts
     say 'Users table is created.'
   end
 end
