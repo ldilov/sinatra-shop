@@ -24,10 +24,8 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :psu_amps_12v_rail
       t.string  :image_url
       t.references :category, index:true
-      t.references :comment,  index:true
     end
     add_foreign_key :products, :categories
-    add_foreign_key :products, :comments
     say 'Products table is created.'
   end
 end
