@@ -5,6 +5,8 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.integer :quantity, null: false
       t.boolean :is_completed
       t.text    :delivery_address
+      t.index   :product_id
+      t.index   :user_id
       t.timestamps
     end
     say 'Orders table is created.'

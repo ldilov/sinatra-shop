@@ -1,8 +1,5 @@
 # create Products table
 class CreateProducts < ActiveRecord::Migration[5.0]
-  belongs_to     :category
-  has_many       :comments
-
   def change
     create_table :products do |t|
       t.float   :price,    null: false
@@ -26,7 +23,11 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :psu_efficiency
       t.integer :psu_amps_12v_rail
       t.string  :image_url
+      t.references :category, index:true
+      t.references :comment,  index:true
     end
+    add_foreign_key :products, :categories
+    add_foreign_key :products, :comments
     say 'Products table is created.'
   end
 end
