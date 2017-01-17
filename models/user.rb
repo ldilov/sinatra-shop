@@ -2,7 +2,7 @@
 require 'digest'
 class User < ActiveRecord::Base
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
-  USER_REGEX  = /^[a-z0-9_-]{3,15}/
+  USER_REGEX  = /\A^[a-z0-9_-]{3,15}\z/
 
   # foreign keys
   has_many  :comments
