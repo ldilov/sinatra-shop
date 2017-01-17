@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Примерно Sinatra приложение</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
+</head>
+<body>
+	<nav>
+        <ul class="clearfix">
+            <li><a href="#">Начало</a></li>
+            <li><a href="#">Профил</a></li>
+            <li><a href="#">Магазин</a></li>
+			<li><a href="#">Контакти</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <%= yield %>
+    </div>
+
+
+      <footer>
+    	<acronym title="Магазинът е собственост на Лазар Дилов. Всички права са запазени!">Магазинът е собственост на Лазар Дилов. Всички права са запазени!</acronym> &copy; 2017 (<a href="mailto:eastman1818@yahoo.com" title="За контакт">email</a>)
+    </footer>
+</body>
+</html>
