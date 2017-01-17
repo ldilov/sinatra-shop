@@ -1,3 +1,7 @@
-get '/'  do
- 'Hello world! THIS IS SINATRA!'
+get '/' do
+  if session[:logged_in].nil?
+    redirect '/login'
+  end
+
+  erb :index
 end
