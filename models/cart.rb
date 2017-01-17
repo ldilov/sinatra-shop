@@ -4,7 +4,7 @@ class Cart < ActiveRecord::Base
 
   # methods
   def self.get_items(userid)
-    where(user_id: userid)
+    where(user_id: userid).to_a
   end
 
 end

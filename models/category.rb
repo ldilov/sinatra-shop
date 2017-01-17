@@ -10,7 +10,7 @@ class Category < ActiveRecord::Base
 
   # methods
   def get_items
-    Product.where(category_id: self.id)
+    Product.where(category_id: self.id).to_a
   end
 
 end

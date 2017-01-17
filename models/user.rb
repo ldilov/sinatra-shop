@@ -41,6 +41,6 @@ class User < ActiveRecord::Base
   end
 
   def get_comments
-    Comment.where(user_id: self.id)
+    Comment.where(user_id: self.id).to_a
   end
 end
