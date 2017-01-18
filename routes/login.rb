@@ -14,6 +14,7 @@ post '/login' do
     session[:logged_in] = true
     session[:username]  = params[:username]
     session[:email]     = params[:email]
+    session[:level]     = user.level
   end
 
   redirect '/'

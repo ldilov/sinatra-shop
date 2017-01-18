@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>PCBuild - магазин за компютри</title>
-
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
@@ -10,8 +11,8 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="height: 200px">
-  <h1>PCBUILD - Магазин за компютърни конфигурации</h1>
-  <p>Изберете най-подходящата конфигурация за вас!</p>
+	<h1>PCBUILD - Магазин за компютърни конфигурации</h1>
+	<p>Изберете най-подходящата конфигурация за вас!</p>
 </div>
 	<nav>
         <ul>
@@ -21,6 +22,9 @@
             <% end %>
             <li><a href="/shop">Магазин</a></li>
 			<li><a href="#">Контакти</a></li>
+			<% if session[:logged_in] == true && session[:level] == 2 %>
+			<li><a href="/admin">Админ панел</a></li>
+			<% end %>
 			<% if session[:logged_in] == true %>
 			<li><a href="/logout">Изход</a></li>
 			<% end %>
@@ -31,8 +35,15 @@
     </div>
 
 
-      <footer>
-    	<acronym title="Магазинът е собственост на Лазар Дилов. Всички права са запазени!">Магазинът е собственост на Лазар Дилов. Всички права са запазени!</acronym> &copy; 2017 (<a href="mailto:eastman1818@yahoo.com" title="За контакт">email</a>)
-    </footer>
+    <footer class="w3-container w3-padding-64 w3-center w3-white w3-xlarge">
+		<a href="https://www.facebook.com/profile.php?id=100010159622484"><i class="fa fa-facebook-official"></i></a>
+		<a href="#"><i class="fa fa-pinterest-p"></i></a>
+		<a href="#"><i class="fa fa-twitter"></i></a>
+		<a href="#"><i class="fa fa-flickr"></i></a>
+		<a href="#"><i class="fa fa-linkedin"></i></a>
+		<p class="w3-medium">
+			Лазар Дилов - Всички права са запазени @ 2017
+		</p>
+	</footer>
 </body>
 </html>
