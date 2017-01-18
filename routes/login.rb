@@ -15,6 +15,7 @@ post '/login' do
     session[:username]  = params[:username]
     session[:email]     = params[:email]
     session[:level]     = user.level
+    session[:rank]      = user.rank
   end
 
   redirect '/'

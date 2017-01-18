@@ -18,16 +18,16 @@
         <ul>
             <li><a href="#">Начало</a></li>
             <% if session[:logged_in] == true %>
-            <li><a href="#">Профил</a></li>
+           		<li><a href="#">Профил</a></li>
             <% end %>
-            <li><a href="/shop">Магазин</a></li>
+           	<li><a href="/shop">Магазин</a></li>
 			<li><a href="#">Контакти</a></li>
 			<% if session[:logged_in] == true && session[:level] == 2 %>
-			<li><a href="/admin">Админ панел</a></li>
+				<li><a href="/admin">Админ панел</a></li>
 			<% end %>
 			<% if session[:logged_in] == true %>
-			<li><a href="/logout">Изход</a></li>
-			<p> Добре дошъл, <%= session[:username] %>!</p>
+				<li><a href="/logout">Изход</a></li>
+				<p class="status"> Добре дошъл, <%= session[:username] %>!</p>
 			<% end %>
         </ul>
     </nav>
