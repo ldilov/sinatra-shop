@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20170115111651) do
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
-  create_table "category", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.text   "description"
     t.string "name"
     t.string "image_url"

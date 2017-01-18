@@ -27,6 +27,7 @@
 			<% end %>
 			<% if session[:logged_in] == true %>
 			<li><a href="/logout">Изход</a></li>
+			<p> Добре дошъл, <%= session[:username] %>!</p>
 			<% end %>
         </ul>
     </nav>
