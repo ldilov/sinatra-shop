@@ -1,15 +1,15 @@
 
 <% if flash[:success] %>
-    <p class="bg-success"><%= flash[:success] %></p>
+    <p class="bg-success" id="status_message"><%= flash[:success] %></p>
 <% end %>
 
 <% if flash[:error] %>
-    <p class="bg-danger"><%= flash[:error] %></p>
+    <p class="bg-danger" id="status_message"><%= flash[:error] %></p>
 <% end %>
 
 <form method="post" action="/login">
     <div class="form-group">
-        <label for="user-name-input">Име</label>
+        <label for="user-name-input"><%= @page %></label>
         <input id="user-name-input"
                class="form-control"
                name="username"
@@ -23,5 +23,18 @@
     </div>
   
     <button type="submit" class="btn btn-default">Вход</button>
-</form>
-<p> tet</p>
+ </form>
+ <a href="/register"><button class="btn btn-default">Регистрация</button></a>
+ <br><br>
+<div class="panel panel-default">
+	<div class="panel-heading">Защо да се регистрирам?</div>
+    <div class="panel-body">
+   	  	<p> Щом виждате това, значи все още нямате акаунт или не сте се вписали.</p>
+		<p> Създаването на профил ви носи много предимства: </p>
+		<ul>
+			<li> Можете да разглеждате продукти </li>
+			<li> Можете да поръчвате продукти </li>
+			<li> Можете да следите статута на поръчката ви</li>
+		</ul>
+ 	</div>
+</div>

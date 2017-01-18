@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   # helper methods
   def rank
-    level.zero? ? 'Клиент' : 'Администратор'
+    level <= 1 ? 'Клиент' : 'Администратор'
   end
 
   def encrypt_password

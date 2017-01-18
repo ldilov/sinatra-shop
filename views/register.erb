@@ -1,0 +1,50 @@
+<div id="id01" class="register_container">
+  <form class="modal-content  animate" method="post" action="/register">
+    <div class="imgcontainer">
+      <img src="images/pcbuild.png" alt="Avatar" class="avatar">
+    </div>
+    <% if flash[:success] %>
+      <p class="bg-success" id="status_message"><%= flash[:success] %></p>
+    <% end %>
+
+    <% if flash[:error] %>
+      <p class="bg-danger" id="status_message"><%= flash[:error] %></p>
+    <% end %>
+    <div class="container">
+	    <input id="user-name-input"
+               class="form-control"
+               name="username"
+               type="text"
+               placeholder="Потребител*">
+        <input id="user-name-input"
+               class="form-control"
+               name="password"
+               type="password"
+               placeholder="Парола*">
+        <input id="user-name-input"
+               class="form-control"
+               name="password_confirmation"
+               type="password"
+               placeholder="Потвърди парола*">
+	    <input id="user-name-input"
+               class="form-control"
+               name="email"
+               type="text"
+               placeholder="Поща*">
+	    <input id="user-name-input"
+               class="form-control"
+               name="gender"
+               type="text"
+               placeholder="Пол">
+      <input id="user-name-input"
+               class="form-control"
+               name="phone"
+               type="text"
+               placeholder="Телефон">
+	        
+	        
+	    <button type="submit">Регистрация</button> 
+    </div>
+
+  </form>
+</div>

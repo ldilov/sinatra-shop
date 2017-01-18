@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
+    <link rel="stylesheet" type="text/css" href="/styles/login.css">
 </head>
 <body>
 <div class="jumbotron text-center" style="height: 200px">
@@ -15,9 +16,14 @@
 	<nav>
         <ul>
             <li><a href="#">Начало</a></li>
+            <% if session[:logged_in] == true %>
             <li><a href="#">Профил</a></li>
-            <li><a href="#">Магазин</a></li>
+            <% end %>
+            <li><a href="/shop">Магазин</a></li>
 			<li><a href="#">Контакти</a></li>
+			<% if session[:logged_in] == true %>
+			<li><a href="/logout">Изход</a></li>
+			<% end %>
         </ul>
     </nav>
     <div class="container">
