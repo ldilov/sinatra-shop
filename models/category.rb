@@ -9,4 +9,8 @@ class Category < ActiveRecord::Base
   def get_items
     Product.where(category_id: self.id).to_a
   end
+
+  def get_items_ids
+    Product.where(category_id: self.id).ids
+  end
 end
