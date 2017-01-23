@@ -20,7 +20,7 @@ get '/shop/:cat/:page' do
 end
 
 post '/shop/:cat/:page' do
-  @category = Category.where(id: params['cat']).to_a.first
+  @category = Category.where(id: params['cat']).to_a.first.id
   @page = params['page'].to_i
   @items = @category.get_items
   @params = params

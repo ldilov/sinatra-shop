@@ -1,0 +1,208 @@
+
+	<div class="container-fluid">
+	    <div class="content-wrapper">	
+			<div class="item-container">	
+				<div class="container">	
+					<div class="col-md-12">
+					</div>			
+					<div class="col-md-7">
+						<img src="../../../<%= @attributes['image_url'] %>"></img>
+						<div class="product-title"><%= @category.name %> #<%=@attributes['id'] %></div>
+						<div class="product-desc">The Corsair Gaming Series GS600 is the ideal price/performance choice for mid-spec gaming PC</div>
+						<hr>
+						<div class="product-price">$ <%= @attributes['price'] %></div>
+						<div class="product-stock"><%= @attributes['quantity'] > 0 ? 'В наличност' : 'Не е наличен' %></div>
+						<hr>
+						<div class="btn-group cart">
+							<button type="button" class="btn btn-success">
+								Добави в кошница 
+							</button>
+						</div>
+					</div>
+			<div class="container-fluid">		
+				<div class="col-md-12 product-info">
+						<ul id="myTab" class="tab">
+							
+							<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'description')">Описание</li></li>
+							<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'comments')">Коментари</li>
+							<% if session[:logged_in] %>
+								<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'post_comments')">Добави коментар</li>
+							<% end %>
+						</ul>
+					<div id="myTabContent" class="tab-content">
+							<div class="tab-pane" id="description">
+							 
+								<section class="container product-info">
+									<table class="tg" style="undefined;table-layout: fixed; width: 796px">
+									<colgroup>
+									<col style="width: 251px">
+									<col style="width: 171px">
+									<col style="width: 374px">
+									</colgroup>
+									  <tr>
+									    <th class="tg-q9qv">Показател</th>
+									    <th class="tg-q9qv">Стойност</th>
+									    <th class="tg-q9qv">Описание</th>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">РАМ памет</td>
+									    <td class="tg-yw4l"><%=@attributes['ram'].to_s + ' GB' unless @attributes['ram'].nil? %></td>
+									    <td class="tg-yw4l">Оперативната памет има особено значение при работните станции и сървърните машини.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Честота на процесор</td>
+									    <td class="tg-yw4l"><%=@attributes['cpu_frequency'].to_s + ' Ghz' unless @attributes['cpu_frequency'].nil? %></td>
+									    <td class="tg-yw4l">Скорост на процесора. Определя колко "цикли"/сек има.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Име на процесор</td>
+									    <td class="tg-yw4l"><%=@attributes['cpu_name'] unless @attributes['cpu_name'].nil? %></td>
+									    <td class="tg-yw4l">-</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Модел на процесор</td>
+									    <td class="tg-yw4l"><%=@attributes['cpu_model_number'] unless @attributes['cpu_model_number'].nil? %></td>
+									    <td class="tg-yw4l">-</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Памет на графичен процесор</td>
+									    <td class="tg-yw4l"><%=@attributes['gpu_vram'].to_s + ' GB' unless @attributes['gpu_vram'].nil? %></td>
+									    <td class="tg-yw4l">От значение е при графична обработка и графични приложения.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Марка на графичен процесор</td>
+									    <td class="tg-yw4l"><%=@attributes['gpu_brand'] unless @attributes['gpu_brand'].nil? %></td>
+									    <td class="tg-yw4l">-</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Размер шина на графичен процесор</td>
+									    <td class="tg-yw4l"><%=@attributes['gpu_mem_bus_width'].to_s + ' bits' unless @attributes['gpu_mem_bus_width'].nil? %></td>
+									    <td class="tg-yw4l">Повече е по-добре. Има значение при тежки графични приложения.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Версия на DirectX</td>
+									    <td class="tg-yw4l"><%=@attributes['gpu_directx'] unless @attributes['gpu_directx'].nil? %></td>
+									    <td class="tg-yw4l">Коя версия на DirectX се поддържа. Има значение при игри и някои графични приложения изпозлващи DX.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Тип у-во за съхранение на данни</td>
+									    <td class="tg-yw4l"><%=@attributes['storage_ssd'] ? 'SSD': 'HDD'%></td>
+									    <td class="tg-yw4l">Показва дали данните се съхраняват на HDD или SSD.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Размер на съхраняващо у-во</td>
+									    <td class="tg-yw4l"><%=@attributes['storage_size'].to_s + ' GB' unless @attributes['storage_size'].nil? %></td>
+									    <td class="tg-yw4l">Показва размера в GB на у-вото за съхранение.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Обороти в минута на съхраняващо у-во</td>
+									    <td class="tg-yw4l"><%=@attributes['storage_rpm'].to_s + ' Rounds per min' unless @attributes['storage_rpm'].nil? %></td>
+									    <td class="tg-yw4l">Повече е по-добре. Валидно само ако използва HDD</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">SATA версия</td>
+									    <td class="tg-yw4l"><%=@attributes['storage_sata_version'] unless @attributes['storage_sata_version'].nil? %></td>
+									    <td class="tg-yw4l">SATA версия насъхраняващото у-во</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Брой съхр. у-ва</td>
+									    <td class="tg-yw4l"><%=@attributes['storage_count'] unless @attributes['storage_count'].nil? %></td>
+									    <td class="tg-yw4l">Брой на инсталирани съхраняващи у-ва</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Мощност на захранване</td>
+									    <td class="tg-yw4l"><%=@attributes['psu_power'].to_s + " Watts" unless @attributes['psu_power'].nil? %></td>
+									    <td class="tg-yw4l">Измерва се във ватове. High-end картите за раширения изискват по-мощно захранване.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Ампераж на 12V линия</td>
+									    <td class="tg-yw4l"><%=@attributes['psu_amps_12v_rail'].to_s + ' A' unless @attributes['psu_amps_12v_rail'].nil? %></td>
+									    <td class="tg-yw4l">От значение при инсталиране на high-end графични карти</td>
+									  </tr>
+									</table>
+								</section>
+											  
+							</div>
+
+						<div class="tab-pane" id="comments">
+							<section>
+								<div class="container">
+									<div class="row">
+									</div><!-- /row -->
+									<div class="row">
+										<% @comments.each do |comment|%>
+											<div class="col-sm-1">
+												<div class="thumbnail">
+												<img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+												</div><!-- /thumbnail -->
+											</div><!-- /col-sm-1 -->
+
+											<div class="col-sm-5">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														<strong><%= comment.get_user.username %></strong> <span class="text-muted"><%= comment.created_at %></span>
+													</div>
+													<div class="panel-body">
+														<p><%= comment.description %></p>
+													</div><!-- /panel-body -->
+												</div><!-- /panel panel-default -->								
+												<% if session[:logged_in] == true && session[:level] > 1 %>
+													<a href="/comment/edit/<%=comment.id %>">[редактирай]</a>
+													<a href="/comment/del/<%=comment.id %>" >[изтрий]    </a>
+												<% end %>
+											</div><!-- /col-sm-5 -->
+										<% end %>
+
+									</div><!-- /row -->
+								</div><!-- /container -->
+							</section>				
+						</div>
+						<!-- ADDING COMMENTS, CHECK IF LOGGED IN -->
+						<% if session[:logged_in] == true %>
+							<div class="tab-pane" id="post_comments">
+								<form action="/comment/" method="post" class="form-horizontal" id="commentForm" role="form"> 
+			                        <div class="form-group">
+			                            <label for="email" class="col-sm-2 control-label">Коментар</label>
+			                            <div class="col-sm-10">
+			                              <textarea class="form-control" name="addComment" id="addComment" rows="5"></textarea>
+			                            </div>
+			                        </div>
+			                        <div class="form-group">
+			                            <label class="col-sm-2 control-label">Верификация</label>
+			                            <div class="col-sm-10">                    
+			                                <div class="input-group">
+			                                  <div class="input-group-addon">България е създадена през</div>
+			                                  <input type="text" class="form-control" name="verification">
+			                                  <div class="input-group-addon"> година.</div>
+			                                </div>
+			                            </div>
+			                        </div>
+			                        <div class="form-group">
+			                            <div class="col-sm-offset-2 col-sm-10">                    
+			                                <button class="btn btn-fail btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Публикувай</button>
+			                            </div>
+			                        </div>            
+		                    	</form>
+							</div>
+						<% end %>
+					</div>
+					<hr>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+	function openTab(evt, tabName) {
+	    var i, tabcontent, tablinks;
+	    tabcontent = document.getElementsByClassName("tab-pane");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+	    document.getElementById(tabName).style.display = "block";
+	    evt.currentTarget.className += " active";
+	}
+</script>

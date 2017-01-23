@@ -94,9 +94,9 @@
 
 <%	@items.each do |item| %>
     <li>
-        <a href="#">
+        <a href="/shop/<%= @category.id %>/<%= item.id %>/details">
             <img src="https://origincdn.azureedge.net/cdn/v3/img/compare/workstations-millennium-black.png">
-            <h4><%= item.get_category.name %> #<%= item.id %></h4>
+            <h4><%= @category.name %> #<%= item.id %></h4>
             <p>$<%= item.price %></p>
         </a>
     </li>
