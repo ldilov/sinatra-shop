@@ -20,12 +20,14 @@ get '/shop/:cat/:page' do
 end
 
 post '/shop/:cat/:page' do
-  @category = Category.where(id: params['cat']).to_a.first.id
+  @category = Category.where(id: params['cat']).to_a.first
   @page = params['page'].to_i
   @items = @category.get_items
   @params = params
   params.each do |param, value|
     case param
+    when 'category'
+      @items = @items.select{ |item| item.category_id == value.to_i }
     when 'ram'
       @items = @items.select{ |item| item.ram == value.to_i }
     when 'cpu_brand'
