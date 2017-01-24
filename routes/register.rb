@@ -21,6 +21,9 @@ post '/register' do
     session[:logged_in] = true
     session[:username]  = user.username
     session[:email]     = user.email
+    session[:level]     = user.level
+    session[:rank]      = user.rank
+    session[:userid]    = user.id
     flash[:success]     = 'Успешно се регистрирахте!'
     redirect '/'
   else
