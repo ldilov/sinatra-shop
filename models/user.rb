@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   USER_REGEX  = /\A^[a-z0-9_-]{3,15}\z/
 
   # foreign keys
-  has_many  :comments
+  has_many  :comments, dependent: :destroy
   # validation
   validates :username,  presence: true, uniqueness: true
   validates :username,  format: { with: USER_REGEX, message: "Invalid user!" }
@@ -42,9 +42,5 @@ class User < ActiveRecord::Base
 
   def empty_cart
     Cart.where(user_id: self.id).delete_all
-  end
-
-  def comments
-    Comment.where(user_id: self.id).to_a
   end
 end

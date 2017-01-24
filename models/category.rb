@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
   validates :name, null:false, length: { in: 5..50 }
 
   # associations
-  has_many :products
+  has_many :products, dependent: :destroy
 
   # methods
   def items

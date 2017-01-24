@@ -5,14 +5,5 @@ class Product < ActiveRecord::Base
 
   # associations
   belongs_to :category
-
-  # methods
-  def comments
-    Comment.where(product_id: self.id).to_a
-  end
-
-  def category
-    Category.find(self.category_id)
-  end
-
+  has_many   :comments, dependent: :destroy
 end
