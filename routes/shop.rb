@@ -27,6 +27,7 @@ post '/shop/:cat/:page' do
   params.each do |param, value|
     case param
     when 'category'
+      @items = Category.all.to_a.map { |cat| cat.get_items }.flatten
       @items = @items.select{ |item| item.category_id == value.to_i }
     when 'ram'
       @items = @items.select{ |item| item.ram == value.to_i }
