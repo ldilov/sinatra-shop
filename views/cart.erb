@@ -54,7 +54,9 @@
 					<td></td>
 					<td colspan="2" class="hidden-xs"></td>
 					<td class="hidden-xs text-center"><strong>Общо $<%= total %></strong></td>
-					<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+					<form method="post" action="/order/add">
+						<td><button  type="submit" class="btn btn-success btn-block">Поръчай <i class="fa fa-angle-right"></i></button></td>
+					</form>
 				</tr>
 			</tfoot>
 		</table>

@@ -1,0 +1,21 @@
+<div class="container">
+	<div class="row">
+		<h3>Редакция на коментар #<%= @comment.id %></h3>
+	</div>
+    
+    <div class="row">
+    
+	    <div class="col-md-6">
+	    	<div class="widget-area no-padding blank">
+				<div class="status-upload">
+					<form method="post" action="/comment/edit/<%= @comment.id %>">
+						<textarea name="description" style="width:100%"><%= @comment.description %></textarea>
+						<input type="hidden" name="url" id="hiddenField" value="<%=@url%>"/>
+						<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Промени</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	        
+    </div>
+</div>

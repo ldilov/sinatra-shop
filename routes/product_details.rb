@@ -3,8 +3,8 @@ get '/shop/:category/:item/details' do
   # hash of attributes
   @attributes = item.attributes
   # array of comments
-  @comments   = item.comments
-  # array of categories
+  @comments   = item.comments.to_a
+  # category of item
   @category   = item.category
   erb :product_details
 end
