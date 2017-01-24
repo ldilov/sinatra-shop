@@ -15,7 +15,7 @@ get '/shop/:cat/:page' do
     @pages = @category.items.count / 6 + 1
     @items = @category.items[((@page - 1) * 6)...(@page * 6)]
   end
-  flash[:error] = 'Няма налични продукти.' if @items.count.zero?
+
   erb :list
 end
 
@@ -52,5 +52,5 @@ post '/shop/:cat/:page' do
   @pages = filtered_items.count / 6 + 1
   session[:filtered_ids] = filtered_items.map(&:id)
   flash[:error] = 'Няма налични продукти.' if @items.count.zero?
-  erb :list
+  redirect "/shop/#{@category.id}/#{@page}"
 end
