@@ -14,9 +14,11 @@
 						<div class="product-stock"><%= @attributes['quantity'] > 0 ? 'В наличност' : 'Не е наличен' %></div>
 						<hr>
 						<div class="btn-group cart">
-							<button type="button" class="btn btn-success">
-								Добави в кошница 
-							</button>
+							<%= @attributes['quantity'] > 0 %>
+								<button type="button" class="btn btn-success">
+									Добави в кошница 
+								</button>
+							<% end %>
 						</div>
 					</div>
 			<div class="container-fluid">		
@@ -140,7 +142,7 @@
 											<div class="col-sm-5">
 												<div class="panel panel-default">
 													<div class="panel-heading">
-														<strong><%= comment.get_user.username %></strong> <span class="text-muted"><%= comment.created_at %></span>
+														<strong><%= comment.user.username %></strong> <span class="text-muted"><%= comment.created_at %></span>
 													</div>
 													<div class="panel-body">
 														<p><%= comment.description %></p>

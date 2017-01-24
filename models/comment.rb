@@ -7,11 +7,11 @@ class Comment < ActiveRecord::Base
   belongs_to :product
 
   # methods
-  def get_user
+  def user
     User.find(self.user_id)
   end
 
-  def get_product
+  def product
     Product.find(self.product_id)
   end
 end

@@ -36,11 +36,11 @@ class User < ActiveRecord::Base
     where("username = ? AND password = ?", username, pass).first
   end
 
-  def get_cart_items
+  def cart_items
     Cart.where(user_id: self.id).pluck(:product_id, :quantity)
   end
 
-  def get_comments
+  def comments
     Comment.where(user_id: self.id).to_a
   end
 end

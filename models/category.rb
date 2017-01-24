@@ -6,11 +6,11 @@ class Category < ActiveRecord::Base
   has_many :products
 
   # methods
-  def get_items
+  def items
     Product.where(category_id: self.id).to_a
   end
 
-  def get_items_ids
+  def items_ids
     Product.where(category_id: self.id).ids
   end
 end

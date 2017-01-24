@@ -10,7 +10,7 @@ post '/login' do
   if user.nil?
     flash[:error] = 'Грешно име или парола!'
   else
-    flash[:success]     = "Вие се вписахте успешно!"
+    flash[:success]     = 'Вие се вписахте успешно!'
     session[:logged_in] = true
     session[:username]  = params[:username]
     session[:email]     = params[:email]

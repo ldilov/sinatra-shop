@@ -7,11 +7,11 @@ class Product < ActiveRecord::Base
   belongs_to :category
 
   # methods
-  def get_comments
-    Comment.find_by(product_id: self.id)
+  def comments
+    Comment.where(product_id: self.id).to_a
   end
 
-  def get_category
+  def category
     Category.find(self.category_id)
   end
 

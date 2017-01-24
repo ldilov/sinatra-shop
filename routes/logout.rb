@@ -1,5 +1,5 @@
 get '/logout' do
-  session.map { |param, value| session[param] = nil}
+  session.keys.map { |param| session[param] = nil }
   flash[:error] = nil
   flash[:success] = nil
   redirect '/'

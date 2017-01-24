@@ -10,6 +10,14 @@
     <% if flash[:error] %>
       <p class="bg-danger" id="status_message"><%= flash[:error] %></p>
     <% end %>
+
+     <% if flash[:username_error] %>
+      <p class="bg-danger" id="status_message"><%= flash[:username_error] %></p>
+    <% end %>
+
+     <% if flash[:email_error] %>
+      <p class="bg-danger" id="status_message"><%= flash[:email_error] %></p>
+    <% end %>
     <div class="container">
 	    <input id="user-name-input"
                class="form-control"
