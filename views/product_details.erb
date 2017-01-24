@@ -14,7 +14,7 @@
 						<div class="product-stock"><%= @attributes['quantity'] > 0 ? 'В наличност' : 'Не е наличен' %></div>
 						<hr>
 						<div class="btn-group cart">
-							<%= @attributes['quantity'] > 0 %>
+							<% if @attributes['quantity'] > 0 %>
 								<button type="button" class="btn btn-success">
 									Добави в кошница 
 								</button>

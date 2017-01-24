@@ -1,0 +1,55 @@
+<div class="container">
+	<table id="cart" class="table table-hover table-condensed">
+    	<thead>
+			<tr>
+				<th style="width:50%">Продукт</th>
+				<th style="width:10%">Цена</th>
+				<th style="width:8%">Количество</th>
+				<th style="width:10%"></th>
+			</tr>
+		</thead>
+		<tbody>
+		<% total = 0 %>
+		<% @items.each do |pair| %>
+			<% subtotal = 0 %>
+			<tr>
+				<td data-th="Product">
+					<div class="row">
+						<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+						<div class="col-sm-10">
+							<h4 class="nomargin"><%= pair[2] %> #<%= pair[0].id %></h4>
+							<p style="color:red"> Моля обновявайте кошницата си, за да запазите промените! </p>
+						</div>
+					</div>
+				</td>
+				<td data-th="Price">$<%= pair[0].price %></td>
+				<% subtotal = pair[1] * pair[0].price %>
+				<td data-th="Quantity">
+					<input name="quantity" type="number" class="form-control text-center" value="<%= pair[1] %>">
+				</td>
+				<td data-th="Subtotal" class="text-center"></td>
+				<td class="actions" data-th="">
+					<form method="get" action="/cart">
+						<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+					</form>
+					<form method="post" action="/cart/delete/<%=@user.id %>/<%=pair[0].id%>">
+						<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+					</form>								
+				</td>
+			</tr>
+			<% total = total + subtotal %>
+		<% end %>
+		</tbody>
+		<tfoot>
+			<tr class="visible-xs">
+				<td class="text-center"><strong>Общо <%= total %></strong></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="2" class="hidden-xs"></td>
+				<td class="hidden-xs text-center"><strong>Общо $<%= total %></strong></td>
+				<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+			</tr>
+		</tfoot>
+	</table>
+</div>

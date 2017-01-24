@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/styles/index.css">
     <link rel="stylesheet" type="text/css" href="/styles/login.css">
 </head>
@@ -19,8 +20,9 @@
             <li><a href="#">Начало</a></li>
             <% if session[:logged_in] == true %>
            		<li><a href="#">Профил</a></li>
+           		<li><a href="/cart">Кошница</a></li>
             <% end %>
-           	<li><a href="/shop">Магазин</a></li>
+            <li><a href="/shop">Магазин</a></li>
 			<li><a href="#">Контакти</a></li>
 			<% if session[:logged_in] == true && session[:level] == 2 %>
 				<li><a href="/admin">Админ панел</a></li>

@@ -37,7 +37,11 @@ class User < ActiveRecord::Base
   end
 
   def cart_items
-    Cart.where(user_id: self.id).pluck(:product_id, :quantity)
+    Cart.where(user_id: self.id).to_a
+  end
+
+  def empty_cart
+    Cart.where(user_id: self.id).delete_all
   end
 
   def comments
