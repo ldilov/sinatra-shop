@@ -3,6 +3,8 @@
 <% end %>
 <% if flash[:add_success] %>
     <p class="bg-success"><%= flash[:add_success] %></p>
+<% else %>
+	<p class="bg-danger"><%= flash[:add_error] %> </p>
 <% end %>
 	<div class="container-fluid">
 	    <div class="content-wrapper">	

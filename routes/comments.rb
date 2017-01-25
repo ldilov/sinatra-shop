@@ -30,7 +30,15 @@ post '/comment/add' do
   comment.description = params['content']
   # verfication
   error_msg = 'Верификацията е неуспешна: ' + params['verify']
-  params['verify'].to_i == 681 ? comment.save : halt(error_msg)
-  flash[:add_success] = 'Коментарът е успешно добавен!'
+  if params['verify'].to_i == 681
+    if comment.save
+      flash[:add_success] = 'Коментарът е успешно добавен!'
+    else
+      flash[:add_error] = "Грешка: #{comment.errors.full_messages.to_sentence}"
+    end
+  else
+    halt(error_msg)
+  end
+
   redirect params['url']
 end
