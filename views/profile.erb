@@ -1,0 +1,68 @@
+<div class="container">
+  	<div class="row">
+  		  
+          
+         <div class="col-md-7 ">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">  <h4 >Потребителски профил</h4></div>
+      <div class="panel-body">
+         
+        <div class="box box-info">
+          
+              <div class="box-body">
+                <div class="col-sm-6">
+                  <div  align="center"> <img alt="Аватар" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> </div>              
+                  <br>
+                </div>
+                <div class="col-sm-6">
+                  <h4 style="color:#00b1b1;"><%= @user.username %></h4></span>
+                    <span><p><%= @user.rank %></p></span>            
+                </div>
+              <div class="clearfix"></div>
+              <hr style="margin:5px 0 5px 0;">
+      
+                
+              <div class="col-sm-5 col-xs-6 tital " >Ел. Поща:</div><div class="col-sm-7 col-xs-6 "><%= @user.email %></div>
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Пол:</div><div class="col-sm-7"><%= @user.gender %></div>
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Дата на регистрация:</div><div class="col-sm-7"><%= @user.created_at %></div>
+
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Дата на последна промяна:</div><div class="col-sm-7"><%= @user.updated_at %></div>
+
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Телефон:</div><div class="col-sm-7"><%= @user.phone %></div>
+
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Коментари:</div><div class="col-sm-7"><%= @user.comments.count %> <a href="profile/comments">[виж]</a></div>
+
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+
+              <div class="col-sm-5 col-xs-6 tital " >Поръчки:</div><div class="col-sm-7"><%= @orders.count %> <a href="profile/orders">[виж]</a></div>
+
+              <div class="clearfix"></div>
+              <div class="bot-border"></div>
+              <a href="profile/edit"><button type="button" class="btn btn-danger">Редакция</button></a>
+ 
+
+            </div>
+          </div>            
+      </div> 
+    </div>
+  </div>  
+         
+  </div>
+</div>
