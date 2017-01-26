@@ -1,5 +1,4 @@
-get '/cart' do
-  404 if session[:logged_in]
+get '/profile/cart' do
   @user = User.find(session[:userid])
 
   unless @user.cart_items.empty?
@@ -14,20 +13,20 @@ get '/cart' do
   erb :cart
 end
 
-post '/cart/delete/:userid/:pid' do
+post '/profile/cart/delete/:userid/:pid' do
   Cart.find_by(user_id: params['userid'], product_id: params['pid']).destroy
-  redirect '/cart'
+  redirect '/profile/cart'
 end
 
-post '/cart/add/:itemid/:userid' do
+post '/profile/cart/add/:itemid/:userid' do
   cart = Cart.new
   cart.product_id = params['itemid']
   cart.user_id    = params['userid']
   cart.quantity   = params['quantity']
   category_id     = Product.find(params['itemid']).category.id
   if cart.save
-    flash[:success] = 'Продуктът е добавен в кошницата!'
+    flash[:add_success] = 'Продуктът е добавен в кошницата!'
   end
 
-  redirect "/shop/#{category_id}/1/details"
+  redirect "/shop/#{category_id}/#{params['itemid']}/details"
 end

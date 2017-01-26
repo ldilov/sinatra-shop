@@ -15,14 +15,14 @@
 					<div class="col-md-7">
 						<img src="../../../<%= @attributes['image_url'] %>"></img>
 						<div class="product-title"><%= @category.name %> #<%=@attributes['id'] %></div>
-						<div class="product-desc">The Corsair Gaming Series GS600 is the ideal price/performance choice for mid-spec gaming PC</div>
+						
 						<hr>
 						<div class="product-price">$ <%= @attributes['price'] %></div>
 						<div class="product-stock"><%= @attributes['quantity'] > 0 ? 'В наличност' : 'Не е наличен' %></div>
 						<hr>
 						<div class="btn-group cart">
 							<% if @attributes['quantity'] > 0 %>
-								<form method="post" action="/cart/add/<%=@attributes['id'] %>/<%=session[:userid]%>">
+								<form method="post" action="/profile/cart/add/<%=@attributes['id'] %>/<%=session[:userid]%>">
 									<input type="number" name="quantity" min="1" max="100" value="1">
 									<button class="btn btn-success" type="submit">
 										Добави в кошница 
