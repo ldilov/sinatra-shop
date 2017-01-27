@@ -6,6 +6,7 @@
    			 <p class="bg-success"><%= flash[:success] %></p>
 		<% end %>
 		<table id="cart" class="table table-hover table-condensed">
+		<form method="post" action="/orders/add">
 	    	<thead>
 				<tr>
 					<th style="width:50%">Продукт</th>
@@ -31,16 +32,12 @@
 					<td data-th="Price">$<%= pair[0].price %></td>
 					<% subtotal = pair[1] * pair[0].price %>
 					<td data-th="Quantity">
-						<input name="quantity" type="number" class="form-control text-center" value="<%= pair[1] %>">
+						<input name="quantity" type="number" class="form-control text-center" value="<%= pair[1] %>" min="1" max="255">
 					</td>
 					<td data-th="Subtotal" class="text-center"></td>
 					<td class="actions" data-th="">
-						<form method="get" action="/profile/cart">
-							<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-						</form>
-						<form method="post" action="/profile/cart/delete/<%=@user.id %>/<%=pair[0].id%>">
-							<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-						</form>								
+						<a href="/profile/cart"><button type="button" class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button></a>			
+						<a href="/profile/cart/delete/<%=@user.id %>/<%=pair[0].id%>"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>								
 					</td>
 				</tr>
 				<% total = total + subtotal %>
@@ -54,13 +51,10 @@
 					<td></td>
 					<td colspan="2" class="hidden-xs"></td>
 					<td class="hidden-xs text-center"><strong>Общо $<%= total %></strong></td>
-					<form method="post" action="/orders/add">
-						<input type="hidden" name="items" value="<%= @items %>">
-						<input type="hidden" name="total_cost" value="<%= total %>">
-						<td><button  type="submit" class="btn btn-success btn-block">Поръчай <i class="fa fa-angle-right"></i></button></td>
-					</form>
+					<td><button  type="submit" class="btn btn-success btn-block">Поръчай <i class="fa fa-angle-right"></i></button></td>
 				</tr>
 			</tfoot>
+			</form>
 		</table>
 	<% end %>
 </div>

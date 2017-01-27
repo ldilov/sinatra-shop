@@ -1,0 +1,94 @@
+<% if flash[:error] %>
+    <p class="bg-danger"><%= flash[:error] %> </p>
+<% else %>
+    <p class="bg-success"><%= flash[:success] %></p>
+    <div class="row">
+        <div class="col-xs-12">
+    		<div class="invoice-title">
+    			<h2>Разписка</h2><h3 class="pull-right">Поръчка # <%= @order.id %></h3>
+    		</div>
+    		<hr>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    				<strong>Таксувано на:</strong><br>
+    					<%=@order.first_name%> <%= @order.last_name %><br>
+    					<%=@order.delivery_address %><br>
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+        			<strong>Доставка до:</strong><br>
+                        <%=@order.first_name%> <%= @order.last_name %><br>
+                        <%=@order.delivery_address %><br>
+    				</address>
+    			</div>
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    					<strong>Начин на плащане:</strong><br>
+    					Наложен платеж<br>
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong>Дата:</strong><br>
+    					<%= @order.created_at %><br><br>
+    				</address>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    
+    <div class="row">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong>Данни на поръчката</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr>
+        							<td><strong>Продукт</strong></td>
+        							<td class="text-center"><strong>Цена</strong></td>
+        							<td class="text-center"><strong>Количество</strong></td>
+        							<td class="text-right"><strong>Общо</strong></td>
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<% @items.each do |item| %>
+    							<tr>
+    								<td><%= item[0].title %></td>
+    								<td class="text-center">$<%= item[0].price %></td>
+    								<td class="text-center"><%= item[1] %></td>
+    								<td class="text-right">$<%= item[0].price * item[1] %></td>
+    							</tr>
+                                <% end %>
+    								<td class="thick-line"></td>
+    								<td class="thick-line"></td>
+    								<td class="thick-line text-center"><strong>Стойност</strong></td>
+    								<td class="thick-line text-right">$<%= @order.price %></td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Доставка</strong></td>
+    								<td class="no-line text-right">Безплатна</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Общо</strong></td>
+    								<td class="no-line text-right">$<%= @order.price %></td>
+    							</tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+<% end %>

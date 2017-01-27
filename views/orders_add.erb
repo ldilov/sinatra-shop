@@ -1,0 +1,39 @@
+ <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <form class="form-horizontal" role="form" action="/orders/add/final" method="post">
+        <fieldset>
+
+          <legend>Данни за поръчка</legend>
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="textinput">Адрес</label>
+              <div class="col-sm-10">
+                <input name="address" type="text" placeholder="Адрес(град, улица , номер, етаж, апартамент)" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="textinput">Име</label>
+              <div class="col-sm-10">
+                <input name="fname" type="text" placeholder="Джон" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label" for="textinput">Фамилия</label>
+              <div class="col-sm-10">
+                <input name="lname" type="text" placeholder="Доу" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <div class="pull-right">
+                  <input type="hidden" name="order" value="<%= @order.id %>">
+                  <button type="submit" class="btn btn-primary">Продължи</button>
+                </div>
+              </div>
+            </div>
+        </fieldset>
+      </form>
+    </div>
+</div>

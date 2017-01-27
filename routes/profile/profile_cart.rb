@@ -12,7 +12,7 @@ get '/profile/cart' do
   erb :cart
 end
 
-post '/profile/cart/delete/:userid/:pid' do
+get '/profile/cart/delete/:userid/:pid' do
   Cart.find_by(user_id: params['userid'], product_id: params['pid']).destroy
   redirect '/profile/cart'
 end
