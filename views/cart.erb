@@ -23,8 +23,8 @@
 						<div class="row">
 							<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
 							<div class="col-sm-10">
-								<h4 class="nomargin"><%= pair[2] %> #<%= pair[0].id %></h4>
-								<p style="color:red"> Моля обновявайте кошницата си, за да запазите промените! </p>
+								<h4 class="nomargin"><%= pair[0].title %></h4>
+								<p style="color:red"> <%= pair[0].description %> </p>
 							</div>
 						</div>
 					</td>
@@ -54,7 +54,9 @@
 					<td></td>
 					<td colspan="2" class="hidden-xs"></td>
 					<td class="hidden-xs text-center"><strong>Общо $<%= total %></strong></td>
-					<form method="post" action="/order/add">
+					<form method="post" action="/orders/add">
+						<input type="hidden" name="items" value="<%= @items %>">
+						<input type="hidden" name="total_cost" value="<%= total %>">
 						<td><button  type="submit" class="btn btn-success btn-block">Поръчай <i class="fa fa-angle-right"></i></button></td>
 					</form>
 				</tr>

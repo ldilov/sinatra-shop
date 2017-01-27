@@ -6,8 +6,7 @@ get '/profile/cart' do
     @items = @user.cart_items.map do |cart|
       product = Product.find(cart.product_id)
       quantity = cart.quantity
-      product_cat = product.category.name
-      [product, quantity, product_cat]
+      [product, quantity]
     end
   end
   erb :cart
