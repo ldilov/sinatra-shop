@@ -14,8 +14,8 @@
 					</div>			
 					<div class="col-md-7">
 						<img src="../../../<%= @attributes['image_url'] %>"></img>
-						<div class="product-title"><%= @category.name %> #<%=@attributes['id'] %></div>
-						
+						<div class="product-title"><%= @attributes['title'] %></div>
+						<p> <%=@attributes['description'] %> </p>
 						<hr>
 						<div class="product-price">$ <%= @attributes['price'] %></div>
 						<div class="product-stock"><%= @attributes['quantity'] > 0 ? 'В наличност' : 'Не е наличен' %></div>
@@ -35,7 +35,7 @@
 				<div class="col-md-12 product-info">
 						<ul id="myTab" class="tab">
 							
-							<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'description')">Описание</li></li>
+							<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'description')">Параметри</li></li>
 							<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'comments')">Коментари</li>
 							<% if session[:logged_in] %>
 								<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'post_comments')">Добави коментар</li>

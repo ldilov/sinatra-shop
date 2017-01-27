@@ -1,0 +1,15 @@
+<section class="comments">
+<% @comments.each do |comment| %>
+  <article class="comment" style="width:55%">
+    <a class="comment-img" href="#non">
+      <img src="https://pbs.twimg.com/profile_images/444197466133385216/UA08zh-B.jpeg" alt="" width="50" height="50">
+    </a>
+    <div class="comment-body">
+      <div class="text">
+        <p><%= comment.description %></p>
+      </div>
+      <p class="attribution">от <a href="#"><%= session[:username] %></a> на <%= comment.created_at %></p>
+    </div>
+  </article>
+<% end %>
+</section>

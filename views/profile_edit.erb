@@ -1,0 +1,58 @@
+<% if flash[:success] %>
+    <p class="bg-success"><%= flash[:success] %></p>
+<% end %>
+
+<div class="container" style="width:30%">
+	<div class="row">
+		 <form class="form-horizontal" method="post" action="/profile/edit">
+            <fieldset>
+                <h2>Редакция на профил</h2>
+                <div class="control-group">
+                    <label class="control-label">Парола</label>
+                    <div class="controls">
+                        <input id="last-name" name="password" type="password" placeholder="парола"
+                        class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Потвърди парола<span style="color:red">*</span></label>
+                    <div class="controls">
+                        <input id="last-name" name="psw_confirm" type="password" placeholder="парола отново"
+                        class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Електронна поща</label>
+                    <div class="controls">
+                        <input id="last-name" name="email" type="text" placeholder="ел. поща"
+                        class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <!-- Select Basic -->
+                <div class="control-group">
+                  <label class="control-label" for="selectbasic">Пол</label>
+                  <div class="controls">
+                    <select id="selectbasic" name="gender" class="input-xlarge">
+                      <option disabled>---избери опция---</option>
+                      <option value="male">  Мъж</option>
+                      <option value="female">Жена</option>                     
+                    </select>
+                  </div>
+                </div>
+
+                <!-- city input-->
+                <div class="control-group">
+                    <label class="control-label">Телефон</label>
+                    <div class="controls">
+                        <input id="mobile" name="phone" type="text" placeholder="телефонен номер" class="input-xlarge">
+                        <p class="help-block"></p>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-danger">Редакция</button>
+            </fieldset>
+        </form>
+	</div>
+</div>

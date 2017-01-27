@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170115111651) do
+ActiveRecord::Schema.define(version: 20170126160551) do
 
   create_table "carts", id: false, force: :cascade do |t|
     t.integer "product_id", null: false
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20170115111651) do
     t.integer "psu_amps_12v_rail"
     t.string  "image_url"
     t.integer "category_id"
+    t.string  "description"
+    t.string  "title"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 

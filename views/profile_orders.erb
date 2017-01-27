@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Продукт</th>
+            <th>Адрес</th>
+            <th>Поща</th>
+            <th>Дата</th>
+            <th>Цена</th>
+            <th>Статут</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td>1</td>
+            <td><a href="http://www.mirchu.net/mobiles/apple-iphone-6/" target="_blank"><%= order.product_id %></a></td>
+            <td><%= @user.delivery_address %></td>
+            <td><%= @user.email      %></td>
+            <td><%= order.created_at %></td>
+            <td><%= order.price      %></td>
+            <% if order.is_completed %>
+                <td><span class="label label-primary">Завършена</span></td>
+            <% else %>
+                <td><span class="label label-info">Обработва се</span></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+	</div>
+</div>
