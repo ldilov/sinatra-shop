@@ -1,6 +1,5 @@
 # creates Model for oders
 class Order < ActiveRecord::Base
-  validates :delivery_address, null:false, length: { in: 10..255 }
 
   #associations
   has_many   :order_items, dependent: :destroy
