@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   # foreign keys
   has_many  :comments, dependent: :destroy
+  has_many  :orders,   dependent: :destroy
+
   # validation
   validates :username,  presence: true, uniqueness: true
   validates :username,  format: { with: USER_REGEX, message: "Invalid user!" }

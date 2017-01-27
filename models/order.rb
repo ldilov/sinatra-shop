@@ -2,6 +2,10 @@
 class Order < ActiveRecord::Base
   validates :delivery_address, null:false, length: { in: 10..255 }
 
+  #associations
+  has_many   :order_items, dependent: :destroy
+  belongs_to :user
+
   # methods
   def date
     date = Array.new.push(created_at).push(updated_at)

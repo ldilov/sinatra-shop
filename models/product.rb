@@ -6,4 +6,5 @@ class Product < ActiveRecord::Base
   # associations
   belongs_to :category
   has_many   :comments, dependent: :destroy
+  has_many   :order_items, dependent: :destroy
 end
