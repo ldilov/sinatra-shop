@@ -1,5 +1,5 @@
 # creates model for order_items
-class Order_item < ActiveRecord::Base
+class OrderItem < ActiveRecord::Base
 
   # associations
   belongs_to :order
