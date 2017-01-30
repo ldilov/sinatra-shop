@@ -13,8 +13,9 @@ post '/register' do
   user.level = 1
   user.password_confirmation = params[:password_confirmation]
   unless user.valid?
-    flash[:username_error] = 'Email ' + user.errors.messages[:username].first
-    flash[:email_error]    = 'Username ' + user.errors.messages[:email].first
+    user.errors.messages.each do |param, msg|
+      flash[param] = "#{param.to_s} #{msg.last.nil? ? msg.first : msg.last}"
+    end
   end
 
   if user.save

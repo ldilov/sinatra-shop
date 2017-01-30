@@ -6,18 +6,10 @@
     <% if flash[:success] %>
       <p class="bg-success" id="status_message"><%= flash[:success] %></p>
     <% end %>
-
-    <% if flash[:error] %>
-      <p class="bg-danger" id="status_message"><%= flash[:error] %></p>
+    <% flash.each do |key, msg| %>
+      <p class="bg-danger"><%= msg %></p>
     <% end %>
-
-     <% if flash[:username_error] %>
-      <p class="bg-danger" id="status_message"><%= flash[:username_error] %></p>
-    <% end %>
-
-     <% if flash[:email_error] %>
-      <p class="bg-danger" id="status_message"><%= flash[:email_error] %></p>
-    <% end %>
+  
     <div class="container">
 	    <input id="user-name-input"
                class="form-control"
