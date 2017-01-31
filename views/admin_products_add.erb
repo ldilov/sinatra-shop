@@ -1,0 +1,215 @@
+<% if flash[:success] %>
+    <p class="bg-success"><%= flash[:success] %></p>
+<% end %>
+
+<form method="post" action="/admin/products/add/">
+	<div class="container-fluid">
+	    <div class="content-wrapper">	
+			<div class="item-container">	
+				<div class="container">	
+					<div class="col-md-12">
+					</div>			
+					<div class="col-md-7">
+						<img src="http://shu-bg.net/sites/all/modules/media_gallery/images/empty_gallery.png" style="height:100px; width:100px"></img><br><br>
+						<div class="product-title"></div>
+						<label> Описание </label>
+						<textarea name="description"> </textarea>
+						<hr>
+						<table>
+						<tr>
+							<td>Категория</td>
+							<td>
+								<select class="form-control" name="category_id">
+									<% @categories.each do |cat| %>
+										<option value="<%= cat.id %>"><%= cat.name %></option>
+									<% end %>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>Обложка</td><td><input type="text" name="image_url"></td>
+						</tr>
+						<tr>
+							<td>Заглавие</td><td><input type="text" name="title"></td>
+						</tr>
+						<tr>
+							<td>Цена</td><td><input type="text" name="price"></td>
+						</tr>
+						<tr>
+							<td>Количество</td><td><input type="text" name="quantity"></td>
+						</tr>
+						</table>
+						<hr>
+						<div class="btn-group cart">
+							<button class="btn btn-success" type="submit">
+								Добави 
+							</button>
+						</div>
+					</div>
+			<div class="container-fluid">		
+				<div class="col-md-12 product-info">
+						<ul id="myTab" class="tab">
+							<li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'description')">Параметри</li>
+						</ul>
+					<div id="myTabContent" class="tab-content">
+							<div class="tab-pane" id="description">
+							 
+								<section class="container product-info">
+									<table class="tg" style="undefined;table-layout: fixed; width: 796px">
+									<colgroup>
+									<col style="width: 251px">
+									<col style="width: 171px">
+									<col style="width: 374px">
+									</colgroup>
+									  <tr>
+									    <th class="tg-q9qv">Показател</th>
+									    <th class="tg-q9qv">Стойност</th>
+									    <th class="tg-q9qv">Описание</th>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">РАМ памет</td>
+									    <td class="tg-yw4l">
+									    	 <select class="form-control" name="ram">
+												<option value="2">2</option>
+												<option value="4">4</option>
+												<option value="8">8</option>
+												<option value="16">16</option>
+												<option value="32">32</option>
+											</select>
+									    </td>
+									    <td class="tg-yw4l">Оперативната памет има особено значение при работните станции и сървърните машини.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Честота на процесор</td>
+									    <td class="tg-yw4l"><input class="form-control" name="cpu_frequency" type="text"></td>
+									    <td class="tg-yw4l">Скорост на процесора. Определя колко "цикли"/сек има.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Име на процесор</td>
+									    <td class="tg-yw4l">
+									    	<select class="form-control" name="cpu_name" id="location1">
+										        <option value="Core 2 Duo">Core 2 Duo</option>
+										        <option value="Core 2 Quad">Core 2 Quad</option>
+										        <option value="Core i3">Core i3</option>
+										        <option value="Core i7">Core i7</option>
+										        <option value="Core i5">Core i5</option>
+										        <option value="Xeon">Xeon</option>
+										        <option value="Opteron">Opteron</option>
+									        </select>
+									    	
+									    </td>
+									    <td class="tg-yw4l">-</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Модел на процесор</td>
+									    <td class="tg-yw4l"><input class="form-control" type="text" name="cpu_model_number"></td>
+									    <td class="tg-yw4l">-</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Памет на графичен процесор</td>
+									    <td class="tg-yw4l">
+									    <select class="form-control" name="gpu_vram" id="location1">
+									        <option value="0">Споделена</option>
+									        <option value="2">2 GB</option>
+									        <option value="4">4 GB</option>
+									        <option value="6">6 GB</option>
+								        </select>							    	
+									    </td>
+									    <td class="tg-yw4l">От значение е при графична обработка и графични приложения.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Марка на графичен процесор</td>
+									    <td class="tg-yw4l">
+									    <select class="form-control" name="gpu_brand" id="location1">
+									        <option value="Integrated">Integrated</option>
+									        <option value="Radeon">Radeon</option>
+									        <option value="GeForce">GeForce</option>
+									        <option value="Quadro">Quadro</option>
+								        </select>
+									    </td>
+									    <td class="tg-yw4l">-</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Размер шина на графичен процесор</td>
+									    <td class="tg-yw4l"><input class="form-control" name="gpu_mem_bus_wdith" type="text"></td>
+									    <td class="tg-yw4l">Повече е по-добре. Има значение при тежки графични приложения.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Версия на DirectX</td>
+									    <td class="tg-yw4l"><input class="form-control" name="gpu_directx" type="text"></td>
+									    <td class="tg-yw4l">Коя версия на DirectX се поддържа. Има значение при игри и някои графични приложения изпозлващи DX.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Тип у-во за съхранение на данни</td>
+									    <td class="tg-yw4l">
+									    <select class="form-control" name="storage_ssd" id="location1">
+									        <option value="1">SSD</option>
+									        <option value="0">HDD</option>
+								        </select>
+									    </td>
+									    <td class="tg-yw4l">Показва дали данните се съхраняват на HDD или SSD.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Размер на съхраняващо у-во</td>
+									    <td class="tg-yw4l">
+								        <select class="form-control" name="storage_size" id="location1">
+									        <option value="120">120 GB</option>
+									        <option value="240">240 GB</option>
+									       	<option value="500">500 GB</option>
+									        <option value="1000">1 TB</option>
+								        </select>
+									    </td>
+									    <td class="tg-yw4l">Показва размера в GB на у-вото за съхранение.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Обороти в минута на съхраняващо у-во</td>
+									    <td class="tg-yw4l"><input class="form-control" type="text" name="storage_rpm"></td>
+									    <td class="tg-yw4l">Повече е по-добре. Валидно само ако използва HDD</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">SATA версия</td>
+									    <td class="tg-yw4l"><input class="form-control" name="storage_sata_version" type="text"></td>
+									    <td class="tg-yw4l">SATA версия насъхраняващото у-во</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Брой съхр. у-ва</td>
+									    <td class="tg-yw4l"><input class="form-control" type="text" name="storage_count"></td>
+									    <td class="tg-yw4l">Брой на инсталирани съхраняващи у-ва</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Мощност на захранване</td>
+									    <td class="tg-yw4l"><input class="form-control" name="psu_power" type="text"> </td>
+									    <td class="tg-yw4l">Измерва се във ватове. High-end картите за раширения изискват по-мощно захранване.</td>
+									  </tr>
+									  <tr>
+									    <td class="tg-yw4l">Ампераж на 12V линия</td>
+									    <td class="tg-yw4l"><input class="form-control" type="text" name="psu_amps_12v_rail"></td>
+									    <td class="tg-yw4l">От значение при инсталиране на high-end графични карти</td>
+									  </tr>
+									</table>
+								</section>
+											  
+							</div>					
+					</div>
+					<hr>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</form>
+<script>
+	function openTab(evt, tabName) {
+	    var i, tabcontent, tablinks;
+	    tabcontent = document.getElementsByClassName("tab-pane");
+	    for (i = 0; i < tabcontent.length; i++) {
+	        tabcontent[i].style.display = "none";
+	    }
+	    tablinks = document.getElementsByClassName("tablinks");
+	    for (i = 0; i < tablinks.length; i++) {
+	        tablinks[i].className = tablinks[i].className.replace(" active", "");
+	    }
+	    document.getElementById(tabName).style.display = "block";
+	    evt.currentTarget.className += " active";
+	}
+</script>

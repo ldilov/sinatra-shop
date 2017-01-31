@@ -1,0 +1,75 @@
+<script>
+$(document).ready(function() {
+    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+});
+</script>
+<% if flash['success'] %>
+    <p class="bg-success"><%= flash[:success] %></p>
+<% end %>
+<% if flash['error'] %>
+    <p class="bg-danger"><%= flash[:error] %></p>
+<% end %>
+<div class="container">
+    <div class="well well-sm">
+        <strong>Всички продукти</strong>
+        <div class="btn-group">
+            <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+            </span>Списък</a> 
+            <a href="#" id="grid" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th"></span>Мрежа</a>
+            <a href="/admin/products/add/" id="grid" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span>Добави продукт</a>
+        </div>
+    </div>
+    <div id="products" class="row list-group">
+        <% @products.each do |product| %>
+            <div class="item  col-xs-4 col-lg-4">
+                <div class="thumbnail">
+                    <% if product.image_url.include?("http") %>
+                        <img class="group list-group-image" src="<%= product.image_url %>" alt="" />
+                    <% else %>
+                        <img class="group list-group-image" src="/<%= product.image_url %>" alt="" />
+                    <% end %>
+                    <div class="caption">
+                        <h4 class="group inner list-group-item-heading">
+                            <%= product.title %></h4>
+                        <p class="group inner list-group-item-text">
+                            <%= product.description %></p>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-6">
+                                <p class="lead">
+                                    $<%= product.price %></p>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a style="width: 90px" class="btn btn-success" href="/admin/products/edit/<%= product.id %>">Редакция</a>
+                            </div>
+                            <div class="col-xs-12 col-md-6">
+                                <a style="width: 90px" class="btn btn-danger" href="/admin/products/delete/<%= product.id %>">Изтрий</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <nav aria-label="Page navigation">
+          <ul class="pagination">
+            <% if @page - 1 != 0 %>
+            <li>
+              <a href="/admin/users/<%= @page - 1 %>" aria-label="Предишна">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            <% end %>
+            <% 1.upto @pages do |page|%>
+                <li><a href="/admin/users/<%= page %>"><%= page %></a></li>
+            <% end %>
+            <% if @page + 1 <= @pages %>
+            <li>
+              <a href="/admin/users/<%= @page + 1 %>" aria-label="Следваща">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+            <% end %>
+          </ul>
+        </nav>
+    </div>
+</div>

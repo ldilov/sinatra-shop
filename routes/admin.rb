@@ -61,3 +61,52 @@ post '/admin/users/add' do
   end
   redirect '/admin/users/1'
 end
+
+get '/admin/products/:p' do
+  @page  = params['p'].to_i
+  @products = Product.all[(@page - 1) * 20...@page * 20]
+  @pages = (Product.all.count / 20.to_f).ceil
+  erb :admin_products, :layout => :adminlayout
+end
+
+get '/admin/products/edit/:id' do
+  @product = Product.find(params['id'])
+  @categories = Category.all
+  erb :admin_products_edit, :layout => :adminlayout
+end
+
+get '/admin/products/delete/:id' do
+  Product.find(params['id']).destroy
+  flash['success'] = 'Операцията е успешна!'
+  redirect '/admin/products/1'
+end
+
+post '/admin/products/edit/:id' do
+  product = Product.find(params['id'])
+  (product.attributes.keys & params.keys).each do |key|
+    product.update_column(key.to_s, params[key.to_s]) unless params[key].nil? || params[key].empty?
+  end
+
+  flash[:success] = 'Промените са приложени успешно!'
+
+  redirect "/admin/products/edit/#{params['id']}"
+end
+
+get '/admin/products/add/' do
+  @categories = Category.all
+  erb :admin_products_add, :layout => :adminlayout
+end
+
+post '/admin/products/add/' do
+  product = Product.new
+  (params.keys & product.attributes.keys).each do |attrib|
+    product.send("#{attrib}=".to_s, params[attrib])
+  end
+  if product.save
+    flash[:success] = 'Успешно е добавен продукт!'
+  else
+    flash[:error]   = 'Възникна грешка при добавянето на продукта!'
+  end
+
+  redirect '/admin/products/1'
+end
