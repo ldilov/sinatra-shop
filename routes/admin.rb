@@ -22,7 +22,7 @@ end
 get '/admin/users/delete/:id' do
   User.find(params['id']).destroy
   flash['success'] = 'Операцията е успешна!'
-  redirect '/admin/users'
+  redirect '/admin/users/1'
 end
 
 post '/admin/users/edit/:id' do
@@ -36,7 +36,7 @@ post '/admin/users/edit/:id' do
   redirect "/admin/users/edit/#{params['id']}"
 end
 
-get '/admin/users/add' do
+get '/admin/users/add/' do
   erb :admin_users_add, :layout => :adminlayout
 end
 
@@ -59,5 +59,5 @@ post '/admin/users/add' do
   else
     flash[:error]       = 'Възникна грешка. Проверете въведените данни отново!'
   end
-  redirect '/admin/users'
+  redirect '/admin/users/1'
 end
