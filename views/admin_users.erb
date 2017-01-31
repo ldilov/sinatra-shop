@@ -1,0 +1,58 @@
+<% if flash['success'] %>
+    <p class="bg-success"><%= flash[:success] %></p>
+<% end %>
+<a href="users/add">
+    <div class="btn-toolbar">
+        <button class="btn btn-primary">Добави потребител</button>
+    </div>
+</a>
+<div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Потребител</th>
+          <th>Ниво</th>
+          <th>Ел. Поща</th>
+          <th>Създаден на</th>
+          <th style="width: 36px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%=user.id%></td>
+          <td><%=user.username%></td>
+          <td><%=user.rank%></td>
+          <td><%=user.email%></td>
+          <td><%=user.created_at%></td>
+          <td>
+              <a class="glyphicon glyphicon-pencil" href="users/edit/<%=user.id%>"></a>
+              <a class="glyphicon glyphicon-minus" href="users/delete/<%=user.id%>"></a>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+<nav aria-label="Page navigation">
+  <ul class="pagination">
+    <% if @page - 1 != 0 %>
+    <li>
+      <a href="/admin/users/<%= @page - 1 %>" aria-label="Предишна">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <% end %>
+    <% 1.upto @pages do |page|%>
+        <li><a href="/admin/users/<%= page %>"><%= page %></a></li>
+    <% end %>
+    <% if @page + 1 <= @pages %>
+    <li>
+      <a href="/admin/users/<%= @page + 1 %>" aria-label="Следваща">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+</nav>

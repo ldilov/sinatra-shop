@@ -1,0 +1,68 @@
+<% if flash['success'] %>
+    <p class="bg-success"><%= flash[:success] %></p>
+<% end %>
+<div class="container">
+    <h1>Редакция на профил</h1>
+  	<hr>
+	<div class="row">
+      <div class="col-md-3">
+        <div class="text-center">
+          <img src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" style="height:100px; width: 100px" class="avatar img-circle" alt="avatar">
+          <p style="margin-top:30px; color:red"> <%= @user.rank %> </p>
+        </div>
+      </div>
+      
+      <div class="col-md-9 personal-info">
+        <h3>Информация</h3>
+        
+        <form class="form-horizontal" role="form" method="post" action="/admin/users/edit/<%= @user.id %>">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Потребителско име:</label>
+            <div class="col-lg-8">
+              <input class="form-control" value="<%= @user.username %>" type="text" name="username">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Ел. Поща:</label>
+            <div class="col-lg-8">
+              <input class="form-control" value="<%= @user.email %>" type="text" name="email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Телефон:</label>
+            <div class="col-lg-8">
+              <input class="form-control" value="<%= @user.phone %>" type="text" name="phone">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Пол:</label>
+            <div class="col-lg-8">
+              <input class="form-control" value="<%= @user.gender %>" type="text" name="gender">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-md-3 control-label">Ниво:</label>
+            <div class="col-md-8">
+              <input class="form-control" value="<%= @user.level %>" type="text" name="level">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Парола:</label>
+            <div class="col-md-8">
+              <input class="form-control" value="" type="password" name="password">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input class="btn btn-primary" value="Запази" type="submit">
+              <span></span>
+              <input class="btn btn-default" value="Отказ" type="reset">
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<hr>

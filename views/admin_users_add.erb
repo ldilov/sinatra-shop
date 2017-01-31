@@ -1,0 +1,47 @@
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<div class="container-fluid">
+   <form class="register-form" method="post" action="/admin/users/add"> 
+    <% if flash[:success] %>
+      <p class="bg-success" id="status_message"><%= flash[:success] %></p>
+    <% end %>
+    <% flash.each do |key, msg| %>
+      <p class="bg-danger"><%= msg %></p>
+    <% end %>
+      <div class="row">      
+           <div class="col-md-4 col-sm-4 col-lg-4">
+              <label for="firstName">Потребителско име</label>
+               <input name="username" class="form-control" type="text">    
+           </div>            
+      </div>
+      <div class="row">
+           <div class="col-md-4 col-sm-4 col-lg-4">
+              <label for="email">Ел. Поюа</label>
+               <input name="email" class="form-control" type="email">             
+           </div>            
+      </div>
+      <div class="row">
+           <div class="col-md-4 col-sm-4 col-lg-4">
+              <label for="password">Парола</label>
+               <input name="password" class="form-control" type="password">             
+           </div>            
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-lg-4">
+          <label for="password">Потвърди парола</label>
+            <input name="password_confirmation" class="form-control" type="password">             
+        </div>            
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-sm-4 col-lg-4">
+          <label for="password">Пол</label>
+            <input name="gender" class="form-control" type="text">             
+        </div>            
+      </div>
+      <hr>
+      <div class="row">
+           <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+           <button class="btn btn-default regbutton">Регистрация</button>
+          </div>         
+      </div>    
+    </form>
+</div>

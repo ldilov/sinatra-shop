@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PCBuild - магазин за компютри</title>
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
+    <link rel="stylesheet" type="text/css" href="/styles/comments.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+ 	<script>
+		$(document).ready(function () {
+		    if(window.location.href.indexOf("hom5e"))
+		    {
+		        $("#sidemenu li#home").addClass("active");
+		    }
+		    else if(window.location.href.indexOf("users"))
+		    {
+		        $("#sidemenu li#users").addClass("active");
+		    }
+		    else if(window.location.href.indexOf("contact"))
+		    {
+		        $("#sidemenu li#contact").addClass("active");
+		    } 
+
+		});
+	</script>
+</head>
+<body>
+<div class="jumbotron text-center" style="height: 200px">
+	<h1>PCBUILD - Магазин за компютърни конфигурации</h1>
+	<p>Изберете най-подходящата конфигурация за вас!</p>
+</div>
+	<nav>
+        <ul>
+            <li><a href="#">Начало</a></li>
+            <% if session[:logged_in] == true %>
+           		<li><a href="/profile">Профил</a></li>
+           		<li><a href="/profile/cart">Кошница</a></li>
+            <% end %>
+            <li><a href="/shop">Магазин</a></li>
+			<li><a href="#">Контакти</a></li>
+			<% if session[:logged_in] == true && session[:level] == 2 %>
+				<li><a href="/admin">Админ панел</a></li>
+			<% end %>
+			<% if session[:logged_in] == true %>
+				<li><a href="/logout">Изход</a></li>
+				<p class="status"> Добре дошъл, <%= session[:username] %>!</p>
+			<% end %>
+        </ul>
+    </nav>
+
+	<div class="container main-container container-fluid">
+		<div class="col-md-2 sidebar">
+			<ul class="nav nav-pills nav-stacked" id="sidemenu">
+				<li id="home"><a href="admin/index">Начало</a></li>
+				<li id="users"><a href="admin/users/1">Потребители</a></li>
+				<li id="products"><a href="admin/products">Продукти</a></li>
+			</ul>
+		</div>
+		<div class="col-md-10 content">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Администраторски панел
+                </div>
+                <div class="panel-body">
+                   <%= yield %>
+                </div>
+            </div>
+		</div>
+     <footer class="w3-container w3-padding-64 w3-center w3-white w3-xlarge">
+		<a href="https://www.facebook.com/profile.php?id=100010159622484"><i class="fa fa-facebook-official"></i></a>
+		<a href="#"><i class="fa fa-pinterest-p"></i></a>
+		<a href="#"><i class="fa fa-twitter"></i></a>
+		<a href="#"><i class="fa fa-flickr"></i></a>
+		<a href="#"><i class="fa fa-linkedin"></i></a>
+		<p class="w3-medium">
+			Лазар Дилов - Всички права са запазени @ 2017
+		</p>
+	</footer>
+	</div>
+</body>
+</html>
+
