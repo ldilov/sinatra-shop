@@ -34,13 +34,15 @@ post '/orders/add/final' do
   @order.delivery_address = params['address']
   @order.is_completed = false
   if @order.save
-    flash[:success] = 'Поръчката е завършена!'
     order_items = @order.order_items
     @items = order_items.map do |item|
       product = Product.find(item.product_id)
+      product.quantity -= item.quantity
+      product.save
       quantity = item.quantity
       [product, quantity]
     end
+      flash[:success] = 'Поръчката е завършена!'
   else
     flash[:error]   = 'Поръчката е неуспешна!'
     @order.destroy
