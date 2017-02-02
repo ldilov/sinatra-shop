@@ -110,3 +110,29 @@ post '/admin/products/add/' do
 
   redirect '/admin/products/1'
 end
+
+get '/admin/orders/:p' do
+  @page  = params['p'].to_i
+  @orders = Order.all[(@page - 1) * 20...@page * 20]
+  @pages = (Order.all.count / 20.to_f).ceil
+  @orders.map! do |order|
+    [order, User.find(order.user_id).phone]
+  end
+  erb :admin_orders, :layout => :adminlayout
+end
+
+post '/admin/orders/finish/:id' do
+  order = Order.find(params['id'])
+  order.is_completed = true
+  if order.save
+    flash[:success] = 'Поръчката е завършена!'
+  end
+
+  redirect '/admin/orders/1'
+end
+
+post '/admin/orders/delete/:id' do
+  Order.find(params['id']).destroy
+  flash[:success] = "Поръчка №#{params['id']} е изтрита успешно!"
+  redirect '/admin/orders/1'
+end
